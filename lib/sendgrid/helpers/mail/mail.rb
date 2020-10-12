@@ -29,8 +29,8 @@ module SendGrid
 
       return if from_email.nil? && subj.nil? && to_email.nil? && cont.nil?
 
-      self.from = from_email
-      self.subject = subj
+      @from = from_email
+      @subject = subj
       personalization = Personalization.new
       personalization.add_to(to_email)
       add_personalization(personalization)
