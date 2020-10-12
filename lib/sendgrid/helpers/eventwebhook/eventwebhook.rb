@@ -21,8 +21,8 @@ module SendGrid
     #   - +timestamp+ -> timestamp value obtained from the 'X-Twilio-Email-Event-Webhook-Timestamp' header
     def verify_signature(public_key, payload, signature, timestamp)
       verify_engine
-      timestamped_playload = "#{timestamp}#{payload}"
-      payload_digest = Digest::SHA256.digest(timestamped_playload)
+      timestamped_payload = "#{timestamp}#{payload}"
+      payload_digest = Digest::SHA256.digest(timestamped_payload)
       decoded_signature = Base64.decode64(signature)
       public_key.dsa_verify_asn1(payload_digest, decoded_signature)
     rescue StandardError
